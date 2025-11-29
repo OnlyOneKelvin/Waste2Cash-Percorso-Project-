@@ -1,0 +1,417 @@
+/*Sections with comment was done with the help of A.I for me to revisit and learn from.*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #111;
+}
+
+
+#header {
+  width: 100%;
+  height: auto;
+}
+
+
+.topbar {
+  width: 100%;
+  height: 50px;
+  background-color: #4CAB71;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10020; /* topmost */
+}
+
+
+.ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.ul li {
+  display: inline-block;
+}
+.fa-brands {
+  color: #000;
+  background-color: #fff;
+  padding: 10px;
+  width: 35px;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.navbar {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  background: #fff;           
+  position: sticky;          /* keep visible on scroll */
+  top: 0;
+  z-index: 10010;            /* above hero but under topbar */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+
+.logo img {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  height: auto;
+  display: block;
+}
+
+
+.navlinks ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.navlinks ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 25px;
+  display: inline-block;
+}
+.navlinks ul li a:hover {
+  background: #4CAB71;
+  color: #fff;
+  border-radius: 6px;
+}
+
+#hero {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    url('your-hero-image.jpg');
+}
+
+
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  overflow: hidden;
+  z-index: 1; /* ensure hero is below nav/topbar */
+  display: block;
+}
+
+
+#hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* keep your existing #hero and #hero img rules, then add: */
+#hero {
+  position: relative;  /* ensure stacking context */
+  z-index: 1;
+}
+
+/* overlay layer on top of the img but behind the text */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
+  background: rgba(0,0,0,0.45); /* change opacity to taste */
+  z-index: 2; /* above the img (which is z-index:1) */
+  pointer-events: none;
+}
+
+/* ensure image is at base layer */
+#hero img { 
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+  display:block;
+  z-index: 1;
+}
+
+/* hero content above overlay */
+#hero .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;      /* must be higher than ::before */
+  color: #fff;     /* set white text for readability */
+  text-align:center;
+}
+.content h2 { 
+    color: #fff;
+    font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: #4CAB71;
+  font-family: 'Playfair Display', serif;
+}
+.content h2 span { 
+    color: #4CAB71; 
+    color: #fff;
+  font-size: 90px;
+  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+} 
+.content p { 
+    color: rgba(255,255,255,0.9);
+    font-size: 20px;
+  font-weight: 500;
+  max-width: 550px;
+  margin: 0 auto 30px;
+  font-family: 'Poppins', sans-serif; 
+}
+.btn {
+  display: inline-block;
+  padding: 15px 35px;
+  background: #4CAB71;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+.btn:hover {
+  background: #fff;
+  color: #4CAB71;
+}
+
+
+.goal {
+  width: 70%;
+  text-align: center;
+  font-weight: bolder;
+  margin: 20px auto;
+}
+.goal h2 {
+  font-size: 50px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: #4CAB71;
+}
+
+
+.footer {
+  background: #0B0C12;
+  color: #fff;
+  padding: 30px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* =========================
+   RESPONSIVE: TABLETS — 992px
+   ========================= */
+@media (max-width: 992px) {
+  .navlinks ul {
+    gap: 20px;
+  }
+
+  .content h2 {
+    font-size: 60px;
+  }
+
+  .content h2 span {
+    font-size: 70px;
+  }
+
+  .content p {
+    font-size: 18px;
+  }
+
+  .goal h2 {
+    font-size: 40px;
+  }
+}
+
+/* =========================
+   RESPONSIVE: PHONES — 768px
+   ========================= */
+@media (max-width: 768px) {
+
+  /* NAVBAR: stack and keep visible */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  /* Logo smaller */
+  .logo img {
+    width: 150px;
+  }
+
+  /* Navlinks become a centered vertical list */
+  .navlinks {
+    width: 100%;
+    display: block;
+  }
+  .navlinks ul {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 8px 0;
+    margin: 0;
+    align-items: center;
+  }
+  .navlinks ul li {
+    width: 100%;
+    text-align: center;
+  }
+  .navlinks ul li a {
+    font-size: 18px;
+    padding: 10px 0;
+    display: block;
+    width: 100%;
+  }
+
+  /* Ensure topbar still fits */
+  .topbar {
+    padding: 8px 12px;
+    height: auto;
+  }
+
+  /* HERO adjustments for phones:
+     Keep the hero visible and center content nicely.
+     Do NOT add padding-top or push the hero down.
+  */
+  #hero {
+    height: 90vh;
+  }
+
+  /* Center hero content with transform, smaller sizes */
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92%;
+    max-width: 620px;
+    padding: 0 12px;
+    text-align: center;
+  }
+
+  .content h2 {
+    font-size: 45px;
+    line-height: 1.05;
+  }
+
+  .content h2 span {
+    font-size: 55px;
+  }
+
+  .content p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 12px 26px;
+  }
+
+  .goal {
+    width: 90%;
+  }
+  .goal h2 {
+    font-size: 35px;
+  }
+}
+
+/* =========================
+   SMALL PHONES — 480px
+   ========================= */
+@media (max-width: 480px) {
+
+  .topbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 10px;
+  }
+
+  .logo img {
+    width: 140px;
+  }
+
+  .content {
+    width: 94%;
+    max-width: 500px;
+    padding: 0 10px;
+  }
+
+  .content h2 {
+    font-size: 35px;
+  }
+
+  .content h2 span {
+    font-size: 45px;
+  }
+
+  .content p {
+    font-size: 15px;
+  }
+
+  .btn {
+    padding: 10px 22px;
+    font-size: 15px;
+  }
+
+  .goal h2 {
+    font-size: 30px;
+  }
+}
+
+/* =========================
+   X-SMALL PHONES — 360px
+   ========================= */
+@media (max-width: 360px) {
+  .content h2 {
+    font-size: 30px;
+  }
+
+  .content h2 span {
+    font-size: 38px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+}
+
+
