@@ -129,7 +129,7 @@ body {
   display: block;
 }
 
-/* keep your existing #hero and #hero img rules, then add: */
+
 #hero {
   position: relative;  /* ensure stacking context */
   z-index: 1;
